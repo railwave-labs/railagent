@@ -4,4 +4,8 @@ require_relative 'lib/docs/architecture_tool'
 require_relative 'lib/docs/functional_requirements_tool'
 require_relative 'lib/docs/prd_tool'
 
-TinyMCP.serve(ArchitectureTool, FunctionalRequirementsTool)
+TinyMCP.serve(
+  ArchitectureTool,
+  FunctionalRequirementsTool,
+  PrdTool
+)
