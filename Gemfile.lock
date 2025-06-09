@@ -1,0 +1,14 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    tiny_mcp (0.2.0)
+
+PLATFORMS
+  ruby
+  x86_64-darwin-22
+
+DEPENDENCIES
+  tiny_mcp
+
+BUNDLED WITH
+   2.6.5
