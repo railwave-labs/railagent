@@ -42,15 +42,7 @@ All documents and tasks are automatically stored in the `.cursor/scratch/` folde
 
 ## Setup Instructions
 
-### 1. Build the Docker Image
-
-```bash
-git clone <your-repo-url>
-cd railagent
-docker build -t railagent .
-```
-
-### 2. Configure MCP Client
+### 1. Configure MCP Client
 
 Add to your `mcp.json` file:
 
@@ -63,16 +55,18 @@ Add to your `mcp.json` file:
         "run",
         "-i",
         "--rm",
-        "railagent"
+        "cestbalez/railagent:latest"
       ]
     }
   }
 }
 ```
 
-### 3. Restart Your MCP Client
+### 2. Restart Your MCP Client
 
 Restart your MCP client to load the new server.
+
+**Note**: The Docker image will be automatically pulled from DockerHub on first use. No manual installation or repository cloning required!
 
 ## Project Structure
 
@@ -92,11 +86,31 @@ railagent/
 
 ## Development
 
-### Local Development
+### Using the Pre-built Image
+
+The easiest way to use Railagent is with the pre-built Docker image:
 
 ```bash
+docker run -i --rm cestbalez/railagent:latest
+```
+
+### Local Development
+
+If you want to contribute or modify the code:
+
+```bash
+git clone <your-repo-url>
+cd railagent
 bundle install
 ruby app.rb
+```
+
+### Building Your Own Image
+
+```bash
+git clone <your-repo-url>
+cd railagent
+docker build -t railagent .
 ```
 
 ## Contributing
