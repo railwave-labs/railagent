@@ -9,6 +9,9 @@ Railagent is an MCP server designed to provide AI agents with a comprehensive wo
 ### Current Tools
 
 - **build_architecture**: Generates comprehensive architecture documentation for Rails applications using a detailed prompt template that covers system overview, tech stack, domains, patterns, data flow, and more.
+- **build_functional_requirements**: Creates detailed functional requirements documents for Rails projects, gathering information about purpose, users, capabilities, workflows, and technical context.
+- **build_prd**: Generates Product Requirements Documents (PRDs) based on functional requirements, providing detailed project specifications and feature breakdowns.
+- **build_frd**: Creates Feature Requirements Documents (FRDs) for specific features based on a PRD and feature specification, breaking down implementation into PR-sized units with technical guidance.
 
 ## Prerequisites
 
@@ -71,6 +74,9 @@ As more tools are added, they will follow this same pattern of providing clear, 
 ## Available Tools
 
 - **build_architecture**: Returns a detailed prompt template for creating comprehensive Rails architecture documentation
+- **build_functional_requirements**: Collects project requirements through structured prompts covering purpose, users, capabilities, workflows, context, and edge cases to generate comprehensive functional requirements documents
+- **build_prd**: Generates Product Requirements Documents (PRDs) based on functional requirements, providing detailed project specifications and feature breakdowns
+- **build_frd**: Takes a PRD and specific feature to generate detailed Feature Requirements Documents with user stories, technical notes, acceptance criteria, and implementation breakdown into PR-sized tasks
 
 *More workflow tools will be added to cover other aspects of Rails development such as feature planning, code review, testing strategies, and deployment workflows.*
 
