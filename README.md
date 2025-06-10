@@ -1,28 +1,48 @@
 # Railagent - MCP Server for AI Agent Workflows
 
-A Model Context Protocol (MCP) server that provides structured workflows and tools for AI agents working with Ruby on Rails applications.
+A Model Context Protocol (MCP) server that provides structured workflows and tools for AI agents working with software development projects, with specialized focus on Rails applications.
 
 ## What This Does
 
-Railagent is an MCP server designed to provide AI agents with a comprehensive workflow for Rails development tasks. It offers specialized tools and prompts that guide agents through various development processes, ensuring consistent and high-quality outcomes.
+Railagent provides AI agents with a comprehensive workflow system for software development. It guides agents through the entire development lifecycle from requirements gathering to implementation, ensuring consistent and high-quality outcomes.
 
-### Current Tools
+## How It Works
 
-- **build_architecture**: Generates comprehensive architecture documentation for Rails applications using a detailed prompt template that covers system overview, tech stack, domains, patterns, data flow, and more.
-- **build_functional_requirements**: Creates detailed functional requirements documents for Rails projects, gathering information about purpose, users, capabilities, workflows, and technical context.
-- **build_prd**: Generates Product Requirements Documents (PRDs) based on functional requirements, providing detailed project specifications and feature breakdowns.
-- **build_frd**: Creates Feature Requirements Documents (FRDs) for specific features based on a PRD and feature specification, breaking down implementation into PR-sized units with technical guidance.
+### For New Projects
 
-## Prerequisites
+1. **Functional Requirements**: Use the functional requirements tool to collect necessary information about the project (purpose, users, capabilities, workflows, context, edge cases)
+2. **Product Requirements Document (PRD)**: Generate a complete PRD from the functional requirements, breaking down the project into features and user stories
+3. **Feature Requirements Document (FRD)**: For each feature, create a detailed FRD that breaks large features into individual PR-sized units
+4. **Task Design Document (TDD)**: Transform the FRD into an implementation plan with specific subtasks, where each subtask corresponds to a commit
 
-- Docker
-- A compatible MCP client (like Claude Desktop or Cursor)
+### For Existing/Complex Systems
+
+- Skip directly to step 4 (TDD) above when you have a clear understanding of what needs to be built
+
+### Implementation Workflow
+
+1. **Initialize Tasks**: Call the initialize tool to set up subtasks based on your TDD implementation plan (stored in `.cursor/scratch/tasks/`)
+2. **Execute Tasks**: Use the execute tool to work on each task individually. Each task represents exactly one commit, and the agent waits for review before committing
+3. **Track Progress**: Progress is maintained in `.cursor/scratch/todo.md` with notes and status updates
+
+All documents and tasks are automatically stored in the `.cursor/scratch/` folder for easy access and organization.
+
+## Available Tools
+
+### Documentation Tools
+- **build_functional_requirements**: Collects comprehensive project requirements
+- **build_prd**: Generates Product Requirements Documents from functional requirements
+- **build_frd**: Creates Feature Requirements Documents for specific features
+- **build_tdd**: Breaks down features into detailed implementation plans with commit-level subtasks
+- **build_architecture**: Generates comprehensive architecture documentation
+
+### Workflow Tools
+- **initialize_task**: Sets up implementation subtasks from TDD plans
+- **execute_task**: Executes individual tasks with review checkpoints
 
 ## Setup Instructions
 
 ### 1. Build the Docker Image
-
-First, clone this repository and build the Docker image:
 
 ```bash
 git clone <your-repo-url>
@@ -32,9 +52,6 @@ docker build -t railagent .
 
 ### 2. Configure MCP Client
 
-Add the following configuration to your MCP client's configuration file:
-
-#### For Cursor and Claude Desktop
 Add to your `mcp.json` file:
 
 ```json
@@ -55,68 +72,32 @@ Add to your `mcp.json` file:
 
 ### 3. Restart Your MCP Client
 
-After updating the configuration, restart your MCP client to load the new server.
+Restart your MCP client to load the new server.
 
-## Usage
-
-Once configured, you can access the available workflow tools in your MCP client. Each tool provides structured prompts and guidance for specific Rails development tasks.
-
-### Workflow Philosophy
-
-Railagent is built around the idea of providing AI agents with:
-- **Structured workflows** for common Rails development tasks
-- **Detailed prompts** that ensure comprehensive coverage of requirements
-- **Best practice guidance** embedded in each tool
-- **Consistent outputs** across different development scenarios
-
-As more tools are added, they will follow this same pattern of providing clear, actionable workflows that help agents deliver high-quality Rails development work.
-
-## Available Tools
-
-- **build_architecture**: Returns a detailed prompt template for creating comprehensive Rails architecture documentation
-- **build_functional_requirements**: Collects project requirements through structured prompts covering purpose, users, capabilities, workflows, context, and edge cases to generate comprehensive functional requirements documents
-- **build_prd**: Generates Product Requirements Documents (PRDs) based on functional requirements, providing detailed project specifications and feature breakdowns
-- **build_frd**: Takes a PRD and specific feature to generate detailed Feature Requirements Documents with user stories, technical notes, acceptance criteria, and implementation breakdown into PR-sized tasks
-
-*More workflow tools will be added to cover other aspects of Rails development such as feature planning, code review, testing strategies, and deployment workflows.*
-
-## Development
-
-### Local Development
-
-If you want to run the server locally without Docker:
-
-```bash
-# Install dependencies
-bundle install
-
-# Run the server
-ruby app.rb
-```
-
-### Project Structure
+## Project Structure
 
 ```
 railagent/
 ├── app.rb                      # Main application entry point
-├── lib/                        # Tool implementations organized by category
-│   └── docs/                   # Documentation-related tools
+├── lib/                        # Tool implementations
+│   ├── docs/                   # Documentation tools
+│   └── workflow/               # Workflow management tools
 ├── prompts/                    # Workflow prompts and templates
 │   ├── docs/                   # Documentation workflow prompts
-│   └── workflow/               # General workflow templates
+│   └── workflow/               # Implementation workflow templates
 ├── Dockerfile                  # Docker configuration
 ├── Gemfile                     # Ruby dependencies
 └── README.md                   # This file
 ```
 
-### Adding New Tools
+## Development
 
-To add new workflow tools:
+### Local Development
 
-1. Create a new tool class in the appropriate `lib/` subdirectory
-2. Add corresponding prompt templates in `prompts/`
-3. Register the tool in `app.rb`
-4. Follow the established pattern of providing comprehensive, structured workflows
+```bash
+bundle install
+ruby app.rb
+```
 
 ## Contributing
 
