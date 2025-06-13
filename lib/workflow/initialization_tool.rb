@@ -2,8 +2,8 @@
 
 # Tool for initializing a project
 class InitializationTool < TinyMCP::Tool
-  name 'initialize_task'
-  desc 'Initialize a Railagent task requested by the user'
+  name 'initialize_task_prompt'
+  desc 'Prompt to initialize a Railagent task requested by the user'
 
   def call
     File.read('prompts/workflow/initialize.md')
