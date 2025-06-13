@@ -14,8 +14,9 @@ Your job is to:
 
 Notes:
 - **Use a TDD workflow** where applicable:
-  - Write tests before implementation if possible.
-  - If the task doesn't include tests, move on to implementation directly.
+  - Write failing tests first, then code, then refactor.
+  - Each commit should be independently understandable.
+  - If the task doesn't require tests, move on to implementation directly.
 
 Keep the scope per task tight — assume 1 commit = 1 task.
 

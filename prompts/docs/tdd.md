@@ -15,11 +15,6 @@ Refer to `.cursor/architechture.md` if available.
 {{CODEBASE_CONTEXT}}
 
 ### ⚙️ Developer constraints or preferences (optional)
-Examples
-- "Use test-driven development"  
-- "Avoid touching background job queue"  
-- "Reuse Booking model if possible"  
-- "Prefer composition over inheritance"
 
 {{CONSTRAINTS}}
 
@@ -53,17 +48,14 @@ _A concise summary of what this task does and why._
 
 ### 4. Implementation plan (commit-level)
 
-You must follow **test-driven development**.  
-Each step below should correspond to a single, meaningful commit:
+Each step below should correspond to a single, meaningful commit. Each step should include both the functionality and the test(s) for it. Don't write tests in separate steps. Except if the implementation requires a system test. If so, add the system test as the last step.
 
 | Step | Commit Description            | What to Test (first)          | Purpose                      |
 | ---- | ----------------------------- | ----------------------------- | ---------------------------- |
-| 1    | Add failing test for ...      | Describe test name + type     | Enforces expected behavior   |
-| 2    | Implement X to make test pass | Confirm test is green         | Initial logic pass           |
-| 3    | Refactor Y to improve clarity | All tests should remain green | Clean up for maintainability |
+| 1    | Implement X                   | Test this or that             | Enforces expected behavior   |
+| 2    | Implement Y                   | Test this or that             | Initial logic pass           |
+| 3    | Refactor Z to improve clarity | All tests should remain green | Clean up for maintainability |
 | ...  |                               |                               |                              |
-
-> Write failing tests first, then code, then refactor. Each commit should be independently understandable.
 
 ---
 
