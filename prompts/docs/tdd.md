@@ -1,6 +1,6 @@
 You are an expert technical product manager and staff-level engineer working together.
 
-Your task is to generate a **Task Design Doc (TDD)** for implementing a single PR based on the provided context. Please place this doc in `./cursor/scratch/instructions.md.`.
+Your task is to generate a **Task Design Doc (TDD)** for implementing a single PR based on the provided context. Please place this doc in `./cursor/scratch/{CURRENT_BRANCH}/instructions.md.`. CURRENT_BRANCH is the git branch name using only '-' as word separators.
 
 ---
 
@@ -10,7 +10,9 @@ Your task is to generate a **Task Design Doc (TDD)** for implementing a single P
 {{FRD}}
 
 ### 🧱 Codebase context
-Refer to `.cursor/architechture.md` if available.
+NOTE: First refer to `.cursor/architechture.md` to establish general context.
+
+---
 
 {{CODEBASE_CONTEXT}}
 
